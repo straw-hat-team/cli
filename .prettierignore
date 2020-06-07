@@ -10,3 +10,5 @@ LICENSE
 mocha.opts
 .eslintignore
 tmp
+.tool-versions
+.yarnrc
