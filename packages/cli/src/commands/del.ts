@@ -50,15 +50,13 @@ export class DelCommand extends BaseCommand {
 
     if (deletedFiles.length === 0) {
       log(
-        chalk.info(
-          `The input ${chalk.success(args.path)} does not match any files.`
-        )
+        chalk.info(`${chalk.highlight(args.path)} does not match any files.`)
       );
       return;
     }
 
     if (flags.dryRun) {
-      log(chalk.info`This is a dry run, the files will no be remove.`);
+      log(chalk.highlight`This is a dry run, the files will no be remove.`);
     } else {
       log(chalk.success`Removing following files.`);
     }
