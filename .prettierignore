@@ -12,3 +12,5 @@ mocha.opts
 tmp
 .tool-versions
 .yarnrc
+*.cmd
+**/dist/**
