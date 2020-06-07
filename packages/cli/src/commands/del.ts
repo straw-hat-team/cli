@@ -1,7 +1,8 @@
-import { flags } from '@oclif/command';
 import del from 'del';
 import { prompt } from 'enquirer';
-import { BaseCommand } from '@straw-hat/cli-core/dist/base-command';
+import { BaseCommand, Flags } from '@straw-hat/cli-core/dist/base-command';
+import * as chalk from '@straw-hat/cli-core/dist/chalk';
+import { log, newline } from '@straw-hat/cli-core/dist/log';
 
 export class DelCommand extends BaseCommand {
   static description = 'Removes things';
@@ -17,17 +18,17 @@ export class DelCommand extends BaseCommand {
   static strict = false;
 
   static flags = {
-    yes: flags.boolean({
+    yes: Flags.boolean({
       default: false,
       char: 'y',
       description: "Automatically answer 'Yes' to the question",
     }),
-    dryRun: flags.boolean({
+    dryRun: Flags.boolean({
       default: false,
       char: 'd',
       description: 'List what would be deleted instead of deleting',
     }),
-    force: flags.boolean({
+    force: Flags.boolean({
       default: false,
       char: 'f',
       description: 'Allow deleting the current working directory and outside',
@@ -38,6 +39,7 @@ export class DelCommand extends BaseCommand {
     const { args, flags } = this.parse(DelCommand);
 
     if (!flags.dryRun) {
+      // @ts-ignore Related to: https://github.com/oclif/command/issues/43
       await this.confirm(flags, args);
     }
 
@@ -46,9 +48,23 @@ export class DelCommand extends BaseCommand {
       dryRun: flags.dryRun,
     });
 
-    if (flags.dryRun) {
-      this.log(deletedFiles.join('\n'));
+    if (deletedFiles.length === 0) {
+      log(
+        chalk.info(
+          `The input ${chalk.success(args.path)} does not match any files.`
+        )
+      );
+      return;
     }
+
+    if (flags.dryRun) {
+      log(chalk.info`This is a dry run, the files will no be remove.`);
+    } else {
+      log(chalk.success`Removing following files.`);
+    }
+
+    log(chalk.info(deletedFiles.join('\n')));
+    newline();
   }
 
   private async confirm(flags: { yes: boolean }, args: { path: string }) {

@@ -1,5 +1,6 @@
 import envinfo from 'envinfo';
 import { BaseCommand } from '@straw-hat/cli-core/dist/base-command';
+import { log } from '@straw-hat/cli-core/dist/log';
 
 export default class InfoCommand extends BaseCommand {
   static description = 'Gather relevant information about the CLI';
@@ -19,6 +20,6 @@ export default class InfoCommand extends BaseCommand {
           fullTree: true,
         }
       )
-      .then(console.log);
+      .then(log);
   }
 }
