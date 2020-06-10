@@ -5,13 +5,13 @@ import * as chalk from '@straw-hat/cli-core/dist/chalk';
 import { log, newline } from '@straw-hat/cli-core/dist/log';
 
 export class DelCommand extends BaseCommand {
-  static description = 'Removes things.';
+  static description = 'removes things';
 
   static args = [
     {
       name: 'path',
       required: true,
-      description: 'Path that will be remove.',
+      description: 'path that will be remove',
     },
   ];
 
@@ -21,17 +21,17 @@ export class DelCommand extends BaseCommand {
     yes: Flags.boolean({
       default: false,
       char: 'y',
-      description: "Automatically answer 'Yes' to the question.",
+      description: "automatically answer 'Yes' to the question",
     }),
     dryRun: Flags.boolean({
       default: false,
       char: 'd',
-      description: 'List what would be deleted instead of deleting.',
+      description: 'list what would be deleted instead of deleting',
     }),
     force: Flags.boolean({
       default: false,
       char: 'f',
-      description: 'Allow deleting the current working directory and outside.',
+      description: 'allow deleting the current working directory and outside',
     }),
   };
 

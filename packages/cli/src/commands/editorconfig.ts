@@ -17,12 +17,12 @@ function resolveFileLocation(context: string) {
 }
 
 export class EditorConfigCommand extends BaseCommand {
-  static description = 'Generates the .editorconfig file.';
+  static description = 'generates the .editorconfig file.';
 
   static flags = {
     context: Flags.string({
       description:
-        'Directory where the .editorconfig file will be created. Defaults to current working directory.',
+        'directory where the .editorconfig file will be created. Defaults to current working directory',
     }),
   };
 
