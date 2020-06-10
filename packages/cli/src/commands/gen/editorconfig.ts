@@ -6,6 +6,7 @@ const templatePath = path.join(
   __dirname,
   '..',
   '..',
+  '..',
   'templates',
   'commands',
   'editorconfig',
@@ -17,7 +18,7 @@ function resolveFileLocation(context: string) {
 }
 
 export class EditorConfigCommand extends BaseCommand {
-  static description = 'generates the .editorconfig file.';
+  static description = 'generates the .editorconfig file';
 
   static flags = {
     context: Flags.string({

@@ -20,7 +20,12 @@
       "@oclif/plugin-help",
       "@oclif/plugin-autocomplete",
       "@oclif/plugin-plugins"
-    ]
+    ],
+    "topics": {
+      "gen": {
+        "description": "multiple generators"
+      }
+    }
   },
   "scripts": {
     "cli": "bin/run",
