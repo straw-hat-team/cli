@@ -23,13 +23,14 @@ commands to link or install new functionalities. Use `shc plugins --help` for
 more information.
 
 <!-- commands -->
+
 ## Command Topics
 
-* [`shc autocomplete`](docs/commands/autocomplete.md) - display autocomplete installation instructions
-* [`shc del`](docs/commands/del.md) - removes things
-* [`shc gen`](docs/commands/gen.md) - multiple generators
-* [`shc help`](docs/commands/help.md) - display help for shc
-* [`shc info`](docs/commands/info.md) - gather relevant information about the CLI
-* [`shc plugins`](docs/commands/plugins.md) - list installed plugins
+- [`shc autocomplete`](docs/commands/autocomplete.md) - display autocomplete installation instructions
+- [`shc del`](docs/commands/del.md) - removes things
+- [`shc gen`](docs/commands/gen.md) - multiple generators
+- [`shc help`](docs/commands/help.md) - display help for shc
+- [`shc info`](docs/commands/info.md) - gather relevant information about the CLI
+- [`shc plugins`](docs/commands/plugins.md) - list installed plugins
 
 <!-- commandsstop -->

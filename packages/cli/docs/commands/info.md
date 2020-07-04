@@ -1,9 +1,8 @@
-`shc info`
-==========
+# `shc info`
 
 gather relevant information about the CLI
 
-* [`shc info`](#shc-info)
+- [`shc info`](#shc-info)
 
 ## `shc info`
 

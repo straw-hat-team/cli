@@ -1,9 +1,8 @@
-`shc gen`
-=========
+# `shc gen`
 
 multiple generators
 
-* [`shc gen:editorconfig`](#shc-geneditorconfig)
+- [`shc gen:editorconfig`](#shc-geneditorconfig)
 
 ## `shc gen:editorconfig`
 
