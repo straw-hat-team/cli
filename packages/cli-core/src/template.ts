@@ -44,11 +44,12 @@ async function writeContent(args: {
     args.override
   );
 
-  if (shouldWriteFile) {
-    log(success(`Writing ${args.destPath} file.`));
-
-    fs.writeFileSync(args.destPath, args.content);
+  if (!shouldWriteFile) {
+    return;
   }
+
+  log(success(`Writing ${args.destPath} file.`));
+  fs.writeFileSync(args.destPath, args.content);
 }
 
 async function checkDestinationFile(destPath: string, override: boolean) {
