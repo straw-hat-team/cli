@@ -56,9 +56,9 @@ export class DelCommand extends BaseCommand {
     }
 
     if (flags.dryRun) {
-      log(chalk.highlight`This is a dry run, the files will no be remove.`);
+      log(chalk.highlight('This is a dry run, the files will no be remove.'));
     } else {
-      log(chalk.success`Removing following files.`);
+      log(chalk.success('Removing following files.'));
     }
 
     log(chalk.info(deletedFiles.join('\n')));
