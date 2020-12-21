@@ -1,6 +1,7 @@
 import * as path from 'path';
 import { BaseCommand, Flags } from '@straw-hat/cli-core/dist/base-command';
 import { render } from '@straw-hat/cli-core/dist/template';
+import { getCwd } from '@straw-hat/cli-core/dist/helpers';
 
 const templatePath = path.join(
   __dirname,
@@ -22,19 +23,15 @@ export class EditorConfigCommand extends BaseCommand {
 
   static flags = {
     context: Flags.string({
-      description:
-        'directory where the .editorconfig file will be created. Defaults to current working directory',
+      description: 'directory where the .editorconfig file will be created. Defaults to current working directory',
     }),
   };
 
   async run() {
     const { flags } = this.parse(EditorConfigCommand);
-    const context = flags.context ?? process.cwd();
+    const context = flags.context ?? getCwd();
     const destPath = resolveFileLocation(context);
 
-    await render({
-      fromPath: templatePath,
-      destPath,
-    });
+    await render({ fromPath: templatePath, destPath });
   }
 }

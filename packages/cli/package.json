@@ -24,6 +24,9 @@
     "topics": {
       "gen": {
         "description": "multiple generators"
+      },
+      "fe": {
+        "description": "frontend commands"
       }
     }
   },
@@ -55,21 +58,24 @@
     "README.md"
   ],
   "dependencies": {
+    "@oclif/command": "1.8.0",
+    "@oclif/config": "1.17.0",
+    "@oclif/errors": "1.3.4",
+    "@oclif/plugin-autocomplete": "0.3.0",
+    "@oclif/plugin-help": "3.2.1",
+    "@oclif/plugin-plugins": "1.9.5",
     "@straw-hat/cli-core": "0.10.3",
-    "@oclif/config": "1.13.3",
-    "@oclif/errors": "1.2.2",
-    "@oclif/plugin-autocomplete": "0.1.4",
-    "@oclif/plugin-help": "2.2.1",
-    "@oclif/plugin-plugins": "1.7.8",
-    "@oclif/command": "1.5.19",
-    "chalk": "3.0.0",
-    "ci-info": "2.0.0",
-    "debug": "4.1.1",
-    "del": "5.1.0",
-    "enquirer": "2.3.2",
-    "envinfo": "7.5.0"
+    "@straw-hat/jest-config-chain": "1.0.1",
+    "debug": "4.3.1",
+    "del": "6.0.0",
+    "enquirer": "2.3.6",
+    "envinfo": "7.7.3",
+    "jest-watch-typeahead": "0.6.1",
+    "ts-jest": "26.4.4",
+    "jest": "26.6.3",
+    "jest-cli": "26.6.3"
   },
   "devDependencies": {
-    "@oclif/dev-cli": "1.22.2"
+    "@oclif/dev-cli": "1.26.0"
   }
 }

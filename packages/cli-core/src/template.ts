@@ -3,13 +3,11 @@ import { prompt } from 'enquirer';
 import fs from 'fs';
 import { success } from './chalk';
 import { log } from './log';
+import { FancyMap } from '@straw-hat/fancy-map';
 
-export async function render(args: {
-  fromPath: string;
-  destPath: string;
-  data?: any;
-  override?: boolean;
-}) {
+const templateCache = new FancyMap<string, string>();
+
+export async function render(args: { fromPath: string; destPath: string; data?: unknown; override?: boolean }) {
   const override = args.override ?? false;
   const templateData = {
     fromPath: args.fromPath,
@@ -17,7 +15,7 @@ export async function render(args: {
     data: args.data ?? {},
   };
 
-  const templateContent = readTemplateContent(args.fromPath);
+  const templateContent = templateCache.getOrSet(args.fromPath, readTemplateContent);
 
   const content = await EJS.render(templateContent, templateData, {
     async: true,
@@ -34,15 +32,8 @@ function readTemplateContent(fromPath: string) {
   return fs.readFileSync(fromPath, { encoding: 'utf8' });
 }
 
-async function writeContent(args: {
-  destPath: string;
-  content: string;
-  override: boolean;
-}) {
-  const shouldWriteFile = await checkDestinationFile(
-    args.destPath,
-    args.override
-  );
+async function writeContent(args: { destPath: string; content: string; override: boolean }) {
+  const shouldWriteFile = await checkDestinationFile(args.destPath, args.override);
 
   if (!shouldWriteFile) {
     return;

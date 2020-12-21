@@ -15,31 +15,32 @@
     "build": "lerna run build"
   },
   "dependencies": {
-    "@straw-hat/prettier-config": "1.0.1",
-    "@straw-hat/tsconfig": "2.1.0",
-    "@commitlint/cli": "8.3.4",
-    "@commitlint/config-conventional": "8.3.4",
-    "@commitlint/config-lerna-scopes": "8.3.4",
-    "commitizen": "4.0.3",
-    "conventional-changelog-cli": "2.0.31",
-    "conventional-recommended-bump": "6.0.5",
-    "cz-conventional-changelog": "3.0.2",
-    "cz-lerna-changelog": "2.0.2",
-    "execa": "4.0.0",
-    "husky": "3.1.0",
-    "lerna": "3.20.2",
-    "lint-staged": "9.5.0",
+    "@straw-hat/prettier-config": "1.2.0",
+    "@straw-hat/tsconfig": "2.1.1",
+    "@commitlint/cli": "11.0.0",
+    "@commitlint/config-conventional": "11.0.0",
+    "@commitlint/config-lerna-scopes": "11.0.0",
+    "commitizen": "4.2.2",
+    "conventional-changelog-cli": "2.1.1",
+    "conventional-recommended-bump": "6.0.11",
+    "cz-conventional-changelog": "3.3.0",
+    "cz-lerna-changelog": "2.0.3",
+    "execa": "5.0.0",
+    "husky": "4.3.6",
+    "lerna": "3.22.1",
+    "lint-staged": "10.5.3",
     "npm-run-all": "4.1.5",
-    "prettier": "1.19.1",
-    "rimraf": "3.0.0",
-    "semver": "7.1.1",
-    "ts-node": "8.5.4",
-    "typescript": "3.7.4"
+    "prettier": "2.2.1",
+    "rimraf": "3.0.2",
+    "semver": "7.3.4",
+    "ts-node": "9.1.1",
+    "typescript": "4.1.3"
   },
   "devDependencies": {
+    "@types/resolve": "1.17.1",
     "@types/ci-info": "2.0.0",
     "@types/debug": "4.1.5",
-    "@types/node": "13.1.2",
-    "@types/ejs": "3.0.4"
+    "@types/node": "14.14.14",
+    "@types/ejs": "3.0.5"
   }
 }
