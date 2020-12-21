@@ -1775,10 +1775,10 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@straw-hat/chainable-config@^0.7.1":
-  version "0.7.1"
-  resolved "https://registry.yarnpkg.com/@straw-hat/chainable-config/-/chainable-config-0.7.1.tgz#5ef73c1780484b52183308b4b6d3328537021054"
-  integrity sha512-7ai8rvOpjKZXbWosif/JylUXfEWMk1ZWTt2kdn7CQiKNyk1hKKXbGk5DPSglmeaB6E+xpxvMpwgC7T1F+fgmyQ==
+"@straw-hat/chainable-config@^0.9.0":
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/@straw-hat/chainable-config/-/chainable-config-0.9.0.tgz#b7eacd110b2a47eba5afb57d2463d34922a1d4e3"
+  integrity sha512-153RMZ9QCxvYoGwiWXTFokwkJLbea5JEy5qBe7ZMuHMF77TwMf7hshCrCSqJeR1EGEZI+B+VE9BmvshD/B5Msg==
   dependencies:
     deepmerge "^4.2.2"
     is-mergeable-object "^1.1.1"
@@ -1789,12 +1789,12 @@
   resolved "https://registry.yarnpkg.com/@straw-hat/fancy-map/-/fancy-map-1.0.2.tgz#d8a1564e1ac2383835eaa00a585d89783560f7e9"
   integrity sha512-9PPP48fHsWPGxsDbGMTHzh+bLVnCeiCg983tsregZRWg5a0C13plOWf81t3JG0ITkn4dtghHNjhC9+MdggEsRg==
 
-"@straw-hat/jest-config-chain@1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@straw-hat/jest-config-chain/-/jest-config-chain-1.0.1.tgz#d6624df1f205c80a30a9df4457f0a86352cf5f9d"
-  integrity sha512-MBTSTT+Uiw6K31/PVg80gcj8kM4TIxaETdUczfz6WFIvwC0RzKReY1Gz0h52iZEiA3yHESYE6lX7dvq83uR+CQ==
+"@straw-hat/jest-config-chain@1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@straw-hat/jest-config-chain/-/jest-config-chain-1.0.2.tgz#458aac780607cfaa5441be908c23ab7a855ef291"
+  integrity sha512-s2GYD4pjKW986Hm/3mryTdJmE5YUgWXYZDvh6tHQ1icbUf73As/PwiKPtv9RLQCQdo5hbkkQz/V3flw/3AwP1A==
   dependencies:
-    "@straw-hat/chainable-config" "^0.7.1"
+    "@straw-hat/chainable-config" "^0.9.0"
 
 "@straw-hat/prettier-config@1.2.0":
   version "1.2.0"

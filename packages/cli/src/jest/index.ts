@@ -1,6 +1,9 @@
 import * as path from 'path';
 import * as fs from 'fs';
 import { JestConfigChain } from '@straw-hat/jest-config-chain';
+import { createDebugger } from '@straw-hat/cli-core/dist/debug';
+
+const debug = createDebugger('jest');
 
 function getSetupFileFor(fileName: string) {
   return (context: string) => {
@@ -16,6 +19,8 @@ const getSetupFiles = getSetupFileFor('jest.setup');
 export function createBaseConfig(args: { context: string }) {
   const config = new JestConfigChain();
 
+  config.rootDir(args.context);
+
   config.clearMocks(true);
 
   config.collectCoverageFrom.add(`<rootDir>/src/**/*.(mjs|js|jsx|ts|tsx)`).add(`<rootDir>/lib/**/*.(mjs|js)`);
@@ -27,10 +32,9 @@ export function createBaseConfig(args: { context: string }) {
   config.moduleFileExtensions
     .set('node', 'node')
     .set('json', 'json')
-    .set('mjs', 'mjs')
     .set('js', 'js')
     .set('jsx', 'jsx')
-    .set('jsx', 'jsx')
+    .set('mjs', 'mjs')
     .set('ts', 'ts')
     .set('tsx', 'tsx');
 
@@ -46,15 +50,17 @@ export function createBaseConfig(args: { context: string }) {
 
   config.transform
     .set('.(ts|tsx)$', require.resolve('ts-jest/dist'))
-    .set('.(mjs|js|jsx)$', require.resolve('babel-jest'));
+    .set('^.+\\.(js|jsx|ts|tsx)$', require.resolve('babel-jest'));
 
   const setupFiles = getSetupFiles(args.context);
   if (setupFiles) {
+    debug(`Setup Files found: ${setupFiles}`);
     config.setupFiles.add(setupFiles);
   }
 
   const setupFilesAfterEnv = getSetupFilesAfterEnv(args.context);
   if (setupFilesAfterEnv) {
+    debug(`Setup Files After Env found: ${setupFiles}`);
     config.setupFilesAfterEnv.add(setupFilesAfterEnv);
   }
 
