@@ -14,7 +14,7 @@ export class JestCommand extends BaseCommand {
   async run() {
     const { argv } = this.parse(JestCommand);
     const context = getCwd();
-    const shcConfig = getShcConfig();
+    const shcConfig = getShcConfig(context);
     const jestConfig = createBaseConfig({ context });
 
     shcConfig?.jest?.config(jestConfig);
