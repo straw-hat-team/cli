@@ -16,7 +16,9 @@ const getSetupFiles = getSetupFileFor('jest.setup');
 export function createBaseConfig(args: { context: string }) {
   const config = new JestConfigChain();
 
-  config.collectCoverageFrom.add(`<rootDir>/src/**/*.{mjs|js|jsx|ts|tsx}`).add(`<rootDir>/lib/**/*.{mjs|js}`);
+  config.clearMocks(true);
+
+  config.collectCoverageFrom.add(`<rootDir>/src/**/*.(mjs|js|jsx|ts|tsx)`).add(`<rootDir>/lib/**/*.(mjs|js)`);
 
   config.coverageDirectory('<rootDir>/coverage');
 
@@ -34,7 +36,7 @@ export function createBaseConfig(args: { context: string }) {
 
   config.roots.add('<rootDir>/tests/jest/');
 
-  config.testMatch.add('<rootDir>/tests/jest/**/*.test.{mjs|js|jsx|ts|tsx}');
+  config.testMatch.add('<rootDir>/tests/jest/**/*.test.(mjs|js|jsx|ts|tsx)');
 
   config.moduleNameMapper.set('^@/(.*)$', ['<rootDir>/src/$1', '<rootDir>/lib/$1']);
 

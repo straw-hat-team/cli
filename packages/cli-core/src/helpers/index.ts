@@ -8,6 +8,11 @@ import { TsConfig } from '../types';
 const debug = createDebugger('helpers');
 const cache = new FancyMap<string, any>();
 
+export function setNodeEnv(env: 'development' | 'production' | 'test') {
+  process.env.NODE_ENV = env;
+  debug(`NODE_ENV: ${env}`);
+}
+
 export function isCI() {
   return !!process.env.CI;
 }
