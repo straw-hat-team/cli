@@ -1,18 +1,18 @@
 import Cypress from 'cypress';
 import { BaseCommand, Flags } from '@straw-hat/cli-core/dist/base-command';
 import { getCwd, isCI, setNodeEnv } from '@straw-hat/cli-core/dist/helpers';
-import { createConfig } from '../../../cypress';
+import { createConfig } from '../../cypress';
 
 export class CypressStartCommand extends BaseCommand {
   static description = 'runs Cypress';
 
   static flags = {
     spec: Flags.string({
-      description: 'Specify the tests to run.',
+      description: 'specify the tests to run',
     }),
     headless: Flags.boolean({
       default: false,
-      description: 'Runs the tests in headless mode. Useful for CI/CD.',
+      description: 'runs the tests in headless mode. Useful for CI/CD',
     }),
   };
 

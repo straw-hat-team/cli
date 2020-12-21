@@ -4,6 +4,7 @@ import { FancyMap } from '@straw-hat/fancy-map';
 import { createDebugger } from '../debug';
 import resolve from 'resolve';
 import { TsConfig } from '../types';
+import makeDir from 'make-dir';
 
 const debug = createDebugger('helpers');
 const cache = new FancyMap<string, any>();
@@ -56,4 +57,21 @@ function loadConfig(context: string) {
   } catch (e) {
     throw new Error(`Failed to load SHC configuration file ${filePath}.\n${e.message}`);
   }
+}
+
+export function touchFileSync(filePath: string) {
+  try {
+    const stats = fs.statSync(filePath);
+    if (stats && stats.isFile()) return filePath;
+  } catch (err) {
+    if (err.code !== 'ENOENT') {
+      throw err;
+    }
+
+    makeDir.sync(path.dirname(filePath));
+  }
+
+  fs.writeFileSync(filePath, '');
+
+  return filePath;
 }

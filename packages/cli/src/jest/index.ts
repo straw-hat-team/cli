@@ -8,7 +8,7 @@ const debug = createDebugger('jest');
 function getSetupFileFor(fileName: string) {
   return (context: string) => {
     return ['mjs', 'js', 'jsx', 'ts', 'tsx']
-      .map((ext) => path.resolve(context, 'tests', 'jest', `${fileName}.${ext}`))
+      .map((ext) => path.join(context, 'tests', 'jest', `${fileName}.${ext}`))
       .find(fs.existsSync);
   };
 }
