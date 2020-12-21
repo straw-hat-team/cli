@@ -50,7 +50,7 @@ export function createBaseConfig(args: { context: string }) {
 
   config.transform
     .set('.(ts|tsx)$', require.resolve('ts-jest/dist'))
-    .set('^.+\\.(js|jsx|ts|tsx)$', require.resolve('babel-jest'));
+    .set('.(js|jsx|mjs)$', require.resolve('babel-jest'));
 
   const setupFiles = getSetupFiles(args.context);
   if (setupFiles) {
