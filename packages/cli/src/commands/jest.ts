@@ -1,7 +1,7 @@
 import * as jest from 'jest-cli';
 import { BaseCommand } from '@straw-hat/cli-core/dist/base-command';
 import { getCwd, getShcConfig, isCI, setNodeEnv } from '@straw-hat/cli-core/dist/helpers';
-import { createBaseConfig } from '../../jest';
+import { createBaseConfig } from '../jest';
 
 export class JestCommand extends BaseCommand {
   static description = [
