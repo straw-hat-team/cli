@@ -1,8 +1,9 @@
 import * as path from 'path';
 import fs from 'fs';
 import { touchFileSync } from '@straw-hat/cli-core/dist/helpers';
+import { ContextDir } from '@straw-hat/cli-core/dist/types';
 
-export function createConfig(args: { context: string; spec?: string }) {
+export function createConfig(args: { context: ContextDir; spec?: string }) {
   const cypressDir = path.join(args.context, 'tests', 'cypress');
   return {
     config: {
