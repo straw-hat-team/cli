@@ -22,6 +22,8 @@ export function createBaseConfig(args: { context: ContextDir }) {
 
   config.rootDir(args.context);
 
+  config.resetMocks(true);
+
   config.clearMocks(true);
 
   config.collectCoverageFrom.add(`<rootDir>/src/**/*.(mjs|js|jsx|ts|tsx)`).add(`<rootDir>/lib/**/*.(mjs|js)`);
