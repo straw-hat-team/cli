@@ -1,6 +1,6 @@
 import * as jest from 'jest-cli';
 import { BaseCommand } from '@straw-hat/cli-core/dist/base-command';
-import { getCwd, getShcConfig, isCI, setNodeEnv } from '@straw-hat/cli-core/dist/helpers';
+import { getCwd, getShcConfig, isCI, loadDotEnv, setNodeEnv } from '@straw-hat/cli-core/dist/helpers';
 import { createBaseConfig } from '../jest';
 
 export class JestCommand extends BaseCommand {
@@ -12,14 +12,16 @@ export class JestCommand extends BaseCommand {
   static strict = false;
 
   async run() {
+    const context = getCwd();
+
     setNodeEnv('test');
+    loadDotEnv('test', context);
 
     const { argv } = this.parse(JestCommand);
-    const context = getCwd();
     const shcConfig = getShcConfig(context);
     const jestConfig = createBaseConfig({ context });
 
-    shcConfig?.commands?.fe?.jest?.config?.(jestConfig);
+    shcConfig?.commands?.jest?.config?.(jestConfig);
 
     argv.push('--config', JSON.stringify(jestConfig.toConfig()));
 

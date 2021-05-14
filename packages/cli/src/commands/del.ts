@@ -40,7 +40,7 @@ export class DelCommand extends BaseCommand {
 
     if (!flags.dryRun) {
       // @ts-ignore Related to: https://github.com/oclif/command/issues/43
-      await this.confirm(flags, args);
+      await this.#confirm(flags, args);
     }
 
     const deletedFiles = await del(args.path, {
@@ -49,9 +49,7 @@ export class DelCommand extends BaseCommand {
     });
 
     if (deletedFiles.length === 0) {
-      log(
-        chalk.info(`${chalk.highlight(args.path)} does not match any files.`)
-      );
+      log(chalk.info(`${chalk.highlight(args.path)} does not match any files.`));
       return;
     }
 
@@ -65,7 +63,7 @@ export class DelCommand extends BaseCommand {
     newline();
   }
 
-  private async confirm(flags: { yes: boolean }, args: { path: string }) {
+  #confirm = async (flags: { yes: boolean }, args: { path: string }) => {
     const response = await prompt<{ shouldRun: boolean }>({
       type: 'confirm',
       initial: true,
@@ -77,5 +75,5 @@ export class DelCommand extends BaseCommand {
     if (!response.shouldRun) {
       this.exit(0);
     }
-  }
+  };
 }

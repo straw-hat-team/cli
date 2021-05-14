@@ -2,6 +2,7 @@ import Command, { flags } from '@oclif/command';
 import chalk from 'chalk';
 import ciInfo from 'ci-info';
 import { createDebugger } from './debug';
+import { isCI } from './helpers';
 
 export const Flags = flags;
 
@@ -10,9 +11,15 @@ export abstract class BaseCommand extends Command {
 
   async init() {
     this.debug(`${this.config.name}: ${chalk.green(this.config.version)}`);
+    if (isCI()) {
+      this.#onCI();
+    }
+  }
+
+  #onCI = () => {
     const ciName = ciInfo.name ?? 'Unknown Continuous Integration environment';
     this.debug(`Running on ${ciName}`);
-  }
+  };
 
   async catch(error: Error | string) {
     if (error === '') {
