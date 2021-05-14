@@ -10,7 +10,7 @@ export abstract class BaseCommand extends Command {
 
   async init() {
     this.debug(`${this.config.name}: ${chalk.green(this.config.version)}`);
-    const ciName = ciInfo.name ?? 'unknown environment';
+    const ciName = ciInfo.name ?? 'Unknown Continuous Integration environment';
     this.debug(`Running on ${ciName}`);
   }
 
