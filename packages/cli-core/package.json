@@ -28,12 +28,12 @@
   "dependencies": {
     "@oclif/command": "1.8.0",
     "@straw-hat/fancy-map": "1.0.2",
-    "chalk": "4.1.0",
-    "ci-info": "2.0.0",
+    "chalk": "4.1.1",
+    "ci-info": "3.1.1",
     "debug": "4.3.1",
-    "ejs": "3.1.5",
+    "ejs": "3.1.6",
     "enquirer": "2.3.6",
     "make-dir": "3.1.0",
-    "resolve": "1.19.0"
+    "resolve": "1.20.0"
   }
 }
