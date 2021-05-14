@@ -30,10 +30,12 @@
     "@straw-hat/fancy-map": "1.0.2",
     "chalk": "4.1.1",
     "ci-info": "3.1.1",
+    "conf": "10.0.1",
     "debug": "4.3.1",
     "ejs": "3.1.6",
     "enquirer": "2.3.6",
     "make-dir": "3.1.0",
+    "ora": "5.4.0",
     "resolve": "1.20.0"
   }
 }
