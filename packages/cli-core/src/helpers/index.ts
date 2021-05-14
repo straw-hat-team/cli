@@ -3,15 +3,17 @@ import * as fs from 'fs';
 import { FancyMap } from '@straw-hat/fancy-map';
 import { createDebugger } from '../debug';
 import resolve from 'resolve';
-import { TsConfig } from '../types';
+import { ContextDir, Environments, TsConfig } from '../types';
 import makeDir from 'make-dir';
+import dotenv from 'dotenv';
+import dotenvExpand from 'dotenv-expand';
 
 const debug = createDebugger('helpers');
 const cache = new FancyMap<string, any>();
 
-export function setNodeEnv(env: 'development' | 'production' | 'test') {
+export function setNodeEnv(env: Environments) {
   process.env.NODE_ENV = env;
-  debug(`NODE_ENV: ${env}`);
+  debug(`Current NODE_ENV: ${env}`);
 }
 
 export function isCI() {
@@ -22,11 +24,11 @@ export function getCwd() {
   return fs.realpathSync(process.cwd());
 }
 
-export function getShcConfig(context: string) {
+export function getShcConfig(context: ContextDir) {
   return cache.getOrSet('SHC_CONFIG', () => loadConfig(context));
 }
 
-export function getTsConfig(context: string): TsConfig {
+export function getTsConfig(context: ContextDir): TsConfig {
   const filePath = path.join(context, 'tsconfig.json');
   const hasTsConfig = fs.existsSync(filePath);
 
@@ -43,7 +45,7 @@ export function getTsConfig(context: string): TsConfig {
   return ts.readConfigFile(filePath, ts.sys.readFile).config;
 }
 
-function loadConfig(context: string) {
+function loadConfig(context: ContextDir) {
   const filePath = path.resolve(context, 'shc.config.js');
 
   if (!fs.existsSync(filePath)) {
@@ -74,4 +76,20 @@ export function touchFileSync(filePath: string) {
   fs.writeFileSync(filePath, '');
 
   return filePath;
+}
+
+export function loadDotEnv(env: Environments, context: ContextDir) {
+  const dotenvPath = path.resolve(context, '.env');
+
+  const dotenvFiles = [
+    `${dotenvPath}.${env}.local`,
+    `${dotenvPath}.${env}`,
+    env !== 'test' && `${dotenvPath}.local`,
+    dotenvPath,
+  ].filter(Boolean) as string[];
+
+  dotenvFiles.filter(fs.existsSync).forEach((filePath: string) => {
+    debug(`Loading environment variable's file: ${filePath}`);
+    dotenvExpand(dotenv.config({ path: filePath }));
+  });
 }
