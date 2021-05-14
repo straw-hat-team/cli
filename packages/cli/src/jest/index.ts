@@ -2,11 +2,12 @@ import * as path from 'path';
 import * as fs from 'fs';
 import { JestConfigChain } from '@straw-hat/jest-config-chain';
 import { createDebugger } from '@straw-hat/cli-core/dist/debug';
+import { ContextDir } from '@straw-hat/cli-core/dist/types';
 
 const debug = createDebugger('jest');
 
 function getSetupFileFor(fileName: string) {
-  return (context: string) => {
+  return (context: ContextDir) => {
     return ['mjs', 'js', 'jsx', 'ts', 'tsx']
       .map((ext) => path.join(context, 'tests', 'jest', `${fileName}.${ext}`))
       .find(fs.existsSync);
@@ -16,7 +17,7 @@ function getSetupFileFor(fileName: string) {
 const getSetupFilesAfterEnv = getSetupFileFor('jest.setupFramework');
 const getSetupFiles = getSetupFileFor('jest.setup');
 
-export function createBaseConfig(args: { context: string }) {
+export function createBaseConfig(args: { context: ContextDir }) {
   const config = new JestConfigChain();
 
   config.rootDir(args.context);

@@ -1,5 +1,5 @@
 import * as jest from 'jest-cli';
-import { BaseCommand } from '@straw-hat/cli-core/dist/base-command';
+import { BaseCommand, Flags } from '@straw-hat/cli-core/dist/base-command';
 import { getCwd, getShcConfig, isCI, loadDotEnv, setNodeEnv } from '@straw-hat/cli-core/dist/helpers';
 import { createBaseConfig } from '../jest';
 
@@ -11,13 +11,19 @@ export class JestCommand extends BaseCommand {
 
   static strict = false;
 
+  static flags = {
+    context: Flags.string({
+      description: 'directory root of the project. Defaults to current working directory',
+    }),
+  };
+
   async run() {
-    const context = getCwd();
+    const { argv, flags } = this.parse(JestCommand);
+    const context = flags.context ?? getCwd();
 
     setNodeEnv('test');
     loadDotEnv('test', context);
 
-    const { argv } = this.parse(JestCommand);
     const shcConfig = getShcConfig(context);
     const jestConfig = createBaseConfig({ context });
 
